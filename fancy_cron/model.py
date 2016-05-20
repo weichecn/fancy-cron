@@ -46,6 +46,6 @@ class CronLog(BaseModel):
     start_time = Column(DateTime(), nullable=False)
     end_time = Column(DateTime(), nullable=False)
     process_time = Column(DateTime(), nullable=False)
-    output = Column(Text())
+    output = Column(Text(), nullable=False)
     create_time = Column(
         DateTime(), nullable=False, default=datetime.datetime.now)

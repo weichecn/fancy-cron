@@ -5,6 +5,7 @@ import contextlib
 
 import click
 
+from fancy_cron.app import app
 from fancy_cron.model import BaseModel, engine
 
 
@@ -31,6 +32,11 @@ def migrate():
 @cli.command()
 def dump():
     pass
+
+
+@cli.command()
+def run():
+    app.run(host='0.0.0.0', debug=True, port=5000)
 
 
 if __name__ == '__main__':
