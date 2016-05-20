@@ -6,6 +6,7 @@ services:
 
 before_script:
   - mysql -e 'create database cron;'
-  - cp config_simple.yml config.yml
+  - pip install PyMySQL==0.7.3
+  - cp config_mysql.yml config.yml
 
 script: nosetests tests
