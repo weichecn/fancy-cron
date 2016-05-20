@@ -2,4 +2,8 @@ language: python
 python:
   - "2.7"
 
+before_script:
+  - mysql -e 'create database cron;'
+  - cp config_simple.yml config.yml
+
 script: nosetests tests
