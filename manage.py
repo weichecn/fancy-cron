@@ -6,7 +6,7 @@ import contextlib
 import click
 
 from fancy_cron.app import app
-from fancy_cron.model import BaseModel, engine
+from fancy_cron.model import create_tables, drop_tables
 
 
 @click.group()
@@ -16,12 +16,12 @@ def cli():
 
 @cli.command()
 def initdb():
-    BaseModel.metadata.create_all(engine)
+    create_tables()
 
 
 @cli.command()
 def destroy():
-    BaseModel.metadata.drop_all(engine)
+    drop_tables()
 
 
 @cli.command()

@@ -45,7 +45,15 @@ class CronLog(BaseModel):
     exit_status = Column(Integer(), nullable=False)
     start_time = Column(DateTime(), nullable=False)
     end_time = Column(DateTime(), nullable=False)
-    process_time = Column(DateTime(), nullable=False)
+    process_time = Column(Integer(), nullable=False)
     output = Column(Text(), nullable=False)
     create_time = Column(
         DateTime(), nullable=False, default=datetime.datetime.now)
+
+
+def create_tables():
+    BaseModel.metadata.create_all(engine)
+
+
+def drop_tables():
+    BaseModel.metadata.drop_all(engine)
