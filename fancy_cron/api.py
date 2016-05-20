@@ -12,6 +12,16 @@ from fancy_cron.model import Cron, CronLog, Session
 api_bp = Blueprint('api_bp', __name__)
 
 
+@api_bp.errorhandler(400)
+def page_not_found(e):
+    return jsonify(dict()), 400
+
+
+@api_bp.errorhandler(404)
+def page_not_found(e):
+    return jsonify(dict()), 404
+
+
 @api_bp.route('/')
 def index():
     return jsonify(dict())
