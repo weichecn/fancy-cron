@@ -3,8 +3,21 @@
 
 import datetime
 
-from sqlalchemy import Column, Integer, String, DateTime, Text
+from sqlalchemy import create_engine, Column, DateTime, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+from config import config
+
+
+mysql_url = \
+    'mysql+pymysql://%(user)s:%(passwd)s@%(host)s:%(port)d/%(db)s?charset=utf8'
+engine = create_engine(mysql_url % config['MYSQL'],
+                       echo_pool=True,
+                       echo=config['DEBUG'],
+                       pool_size=config['POOL_SIZE'],
+                       pool_recycle=600)
+Session = sessionmaker(bind=engine)
 
 
 BaseModel = declarative_base()
