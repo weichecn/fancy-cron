@@ -1,8 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from fancy_cron.model import BaseModel, engine
+from fancy_cron.model import create_tables, drop_tables
 
 
-def setup():
-    BaseModel.metadata.create_all(engine)
+def test_create_tables():
+    create_tables()
+
+
+def test_drop_tables():
+    drop_tables()
