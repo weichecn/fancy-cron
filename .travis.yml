@@ -6,7 +6,7 @@ services:
 
 before_script:
   - pip install fake-factory
-  - mysql -e 'create database cron;'
+  - mysql -e 'create database fancy_cron;'
   - pip install PyMySQL==0.7.3
   - cp config_mysql.yml config.yml
 
