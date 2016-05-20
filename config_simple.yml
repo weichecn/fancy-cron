@@ -1,0 +1,9 @@
+db:
+    scheme: 'mysql+pymysql'
+    user: 'root'
+    passwd: ''
+    host: '127.0.0.1'
+    port: 3306
+    db: 'fancy_cron'
+    pool_size: 30
+debug: true

@@ -11,11 +11,11 @@ from config import config
 
 
 mysql_url = \
-    'mysql+pymysql://%(user)s:%(passwd)s@%(host)s:%(port)d/%(db)s?charset=utf8'
-engine = create_engine(mysql_url % config['MYSQL'],
+    '%(scheme)s://%(user)s:%(passwd)s@%(host)s:%(port)d/%(db)s?charset=utf8'
+engine = create_engine(mysql_url % config['db'],
                        echo_pool=True,
-                       echo=config['DEBUG'],
-                       pool_size=config['POOL_SIZE'],
+                       echo=config['debug'],
+                       pool_size=config['db']['pool_size'],
                        pool_recycle=600)
 Session = sessionmaker(bind=engine)
 
