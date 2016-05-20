@@ -27,7 +27,7 @@ class Cron(BaseModel):
     __tablename__ = 'cron'
 
     id = Column(Integer(), primary_key=True)
-    cmd = Column(String(1024), nullable=False, unique=True)
+    cmd = Column(String(255), nullable=False, unique=True)
     total_count = Column(Integer(), nullable=False, default=0)
     success_count = Column(Integer(), nullable=False, default=0)
     fail_count = Column(Integer(), nullable=False, default=0)

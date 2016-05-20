@@ -1,7 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import contextlib
+
 import click
+
+from fancy_cron.model import BaseModel, engine
 
 
 @click.group()
@@ -11,18 +15,17 @@ def cli():
 
 @cli.command()
 def initdb():
-    database.create_tables(tables, safe=True)
+    BaseModel.metadata.create_all(engine)
 
 
 @cli.command()
 def destroy():
-    database.drop_tables(tables, safe=True)
+    BaseModel.metadata.drop_all(engine)
 
 
 @cli.command()
 def migrate():
-    database.drop_tables([Xiehouyu], safe=True)
-    database.create_tables([Xiehouyu], safe=True)
+    pass
 
 
 @cli.command()
