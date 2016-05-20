@@ -29,7 +29,12 @@ def index():
 
 @api_bp.route('/crons')
 def crons():
-    return jsonify(dict())
+    with contextlib.closing(Session()) as s:
+        ret = dict(crons=[])
+        for cron in s.query(Cron):
+            ret.append(cron.id)
+
+        return jsonify(ret)
 
 
 @api_bp.route('/crons/<int:cron_id>')
@@ -39,11 +44,13 @@ def cron(cron_id):
 
 @api_bp.route('/crons/<int:cron_id>/logs')
 def cron_logs(cron_id):
+    # page, page_size
     return jsonify(dict())
 
 
 @api_bp.route('/logs')
 def logs():
+    # page, page_size
     return jsonify(dict())
 
 
